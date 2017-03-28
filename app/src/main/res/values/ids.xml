@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="name" type="id" />
+    <item name="desc" type="id" />
+    <item name="date" type="id" />
+    <item name="poster" type="id" />
+</resources>
