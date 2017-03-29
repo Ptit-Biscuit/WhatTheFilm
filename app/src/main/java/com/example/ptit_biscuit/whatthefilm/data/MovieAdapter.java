@@ -1,12 +1,12 @@
-package com.example.ptit_biscuit.whatthefilm;
+package com.example.ptit_biscuit.whatthefilm.data;
 
 import android.app.Activity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
+import com.example.ptit_biscuit.whatthefilm.R;
 
 import java.util.ArrayList;
 

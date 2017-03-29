@@ -1,4 +1,4 @@
-package com.example.ptit_biscuit.whatthefilm;
+package com.example.ptit_biscuit.whatthefilm.activity;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -12,6 +12,8 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.ptit_biscuit.whatthefilm.data.Movie;
+import com.example.ptit_biscuit.whatthefilm.R;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;

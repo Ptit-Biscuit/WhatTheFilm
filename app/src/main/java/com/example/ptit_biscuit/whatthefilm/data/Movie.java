@@ -1,4 +1,4 @@
-package com.example.ptit_biscuit.whatthefilm;
+package com.example.ptit_biscuit.whatthefilm.data;
 
 import android.widget.ImageView;
 
