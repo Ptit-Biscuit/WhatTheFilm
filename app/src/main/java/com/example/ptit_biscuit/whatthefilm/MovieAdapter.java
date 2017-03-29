@@ -19,8 +19,6 @@ public class MovieAdapter extends ArrayAdapter<Movie> {
 
     static class ViewHolder {
         public TextView nameHolder;
-        public TextView descHolder;
-        public TextView dateHolder;
     }
 
     public MovieAdapter(Activity context, ArrayList<Movie> items) {
@@ -34,20 +32,14 @@ public class MovieAdapter extends ArrayAdapter<Movie> {
 
         if (row == null) {
             LayoutInflater inflater = context.getLayoutInflater();
-            row = inflater.inflate(R.layout.list_view, null);
+            row = inflater.inflate(android.R.layout.simple_list_item_1, null);
 
             viewHolder = new ViewHolder();
-            viewHolder.nameHolder = (TextView) row.findViewById(R.id.name);
-            viewHolder.descHolder = (TextView) row.findViewById(R.id.desc);
-            viewHolder.dateHolder = (TextView) row.findViewById(R.id.date);
+            viewHolder.nameHolder = (TextView) row;
             row.setTag(viewHolder);
         }
         else {
-            viewHolder = (ViewHolder) row.getTag();
-
-            viewHolder.nameHolder.setText(getItem(position).getName());
-            viewHolder.descHolder.setText(getItem(position).getDesc());
-            viewHolder.dateHolder.setText(getItem(position).getDate());
+            ((TextView)row).setText(getItem(position).getName());
         }
 
         return row;

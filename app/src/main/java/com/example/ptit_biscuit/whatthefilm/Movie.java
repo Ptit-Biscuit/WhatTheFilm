@@ -53,4 +53,13 @@ public class Movie {
     public void setPoster(ImageView poster) {
         this.poster = poster;
     }
+
+    @Override
+    public String toString() {
+        return "Movie{" +
+                "name='" + name + '\'' +
+                ", desc='" + desc + '\'' +
+                ", date='" + date + '\'' +
+                '}';
+    }
 }
