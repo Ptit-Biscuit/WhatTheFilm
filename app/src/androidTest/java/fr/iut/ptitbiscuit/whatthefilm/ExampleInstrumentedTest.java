@@ -1,4 +1,4 @@
-package com.example.ptit_biscuit.whatthefilm;
+package fr.iut.ptitbiscuit.whatthefilm;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

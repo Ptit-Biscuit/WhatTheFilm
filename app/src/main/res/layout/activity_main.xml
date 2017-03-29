@@ -1,20 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:id="@+id/activity_main"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              tools:context="fr.iut.ptitbiscuit.whatthefilm.activity.MainActivity">
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_main"
+    android:id="@+id/activity_main_sub"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.ptit_biscuit.whatthefilm.activity.MainActivity">
+    tools:context="com.iut.ptitbiscuit.whatthefilm.fr.iut.ptitbiscuit.whatthefilm.activity.MainActivity">
 
     <TextView
         android:text="@string/labelMovieName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/textView"
+        android:id="@+id/film_name_label"
         android:layout_marginTop="16dp"
         android:layout_alignParentTop="true"
         android:layout_alignStart="@+id/editText"
@@ -26,7 +33,7 @@
         android:id="@+id/language"
         android:layout_marginTop="11dp"
         android:entries="@array/lang"
-        android:layout_below="@+id/textView3"
+        android:layout_below="@+id/language_label"
         android:layout_alignStart="@+id/years"
         android:layout_alignEnd="@+id/years" />
 
@@ -38,7 +45,7 @@
         android:ems="10"
         android:layout_marginTop="10dp"
         android:id="@+id/editText"
-        android:layout_below="@+id/textView"
+        android:layout_below="@+id/film_name_label"
         android:layout_centerHorizontal="true" />
 
     <EditText
@@ -48,7 +55,7 @@
         android:layout_marginTop="11dp"
         android:id="@+id/years"
         android:text="@string/defaultYear"
-        android:layout_below="@+id/textView2"
+        android:layout_below="@+id/yearsLabel"
         android:layout_alignStart="@+id/editText"
         android:inputType="date" />
 
@@ -57,7 +64,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="35dp"
-        android:id="@+id/textView3"
+        android:id="@+id/language_label"
         android:layout_below="@+id/years"
         android:layout_alignStart="@+id/language"
         android:labelFor="@+id/language" />
@@ -66,7 +73,7 @@
         android:text="@string/labelYear"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/textView2"
+        android:id="@+id/yearsLabel"
         android:layout_marginTop="36dp"
         android:layout_below="@+id/editText"
         android:layout_alignStart="@+id/years"
@@ -77,10 +84,20 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="45dp"
-        android:id="@+id/button2"
+        android:id="@+id/researchButton"
         android:layout_alignParentBottom="true"
         android:layout_alignStart="@+id/language"
         android:layout_alignEnd="@+id/years"
         android:onClick="research" />
+</RelativeLayout>
 
+	<ProgressBar
+		style="?android:attr/progressBarStyleHorizontal"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:id="@+id/main_loading"
+		android:layout_alignParentBottom="true"
+		android:layout_alignParentStart="true"
+		android:progressTint="@color/colorAccent"
+		android:max="10" />
 </RelativeLayout>

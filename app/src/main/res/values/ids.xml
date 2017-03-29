@@ -3,5 +3,5 @@
     <item name="name" type="id" />
     <item name="desc" type="id" />
     <item name="date" type="id" />
-    <item name="poster" type="id" />
+    <item name="imagePath" type="id" />
 </resources>
