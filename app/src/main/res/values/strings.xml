@@ -5,6 +5,8 @@
     <string name="labelMovieName">Le nom du film</string>
     <string name="labelYear">L\'année (optionnelle)</string>
     <string name="labelLanguage">La langue</string>
+    <string name="rating">score:</string>
+    <string name="categories">catégories:</string>
     <string-array name="lang">
         <item>Français - fr</item>
         <item>English - en</item>

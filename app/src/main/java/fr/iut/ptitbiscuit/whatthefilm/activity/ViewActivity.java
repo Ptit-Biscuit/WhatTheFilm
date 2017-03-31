@@ -34,6 +34,11 @@ public class ViewActivity extends AppCompatActivity {
 	private static final String TAG = "ViewActivity";
 
 	/**
+	 * Message d'information si aucun film n'est récupéré
+	 */
+	private static final String NODATA = "Aucun film correspondant à votre recherche n'a été trouvé";
+
+	/**
 	 * Référence vers les différentes {@link View} utilisées afin d'éviter d'appeler {@link #findViewById(int)}
 	 */
 	private static class ViewHolder {
@@ -44,6 +49,11 @@ public class ViewActivity extends AppCompatActivity {
 	 * L'instance de {@link ViewHolder} utilisée par cette {@link ViewActivity}
 	 */
 	public final ViewHolder viewHolder = new ViewHolder();
+
+	/**
+	 * Liste des films obtenus à l'aide de la requête
+	 */
+	private ArrayList<Movie> movies;
 
 	/**
 	 * Initialise cette {@link ViewActivity} et récupère les données de l'{@link Intent}
@@ -62,16 +72,19 @@ public class ViewActivity extends AppCompatActivity {
 				getIntent().getStringExtra("language"),
 				getIntent().getStringExtra("year"));
 
-//        ((TextView) findViewById(R.id.textView4)).setText(research);
-
-		//image --> https://image.tmdb.org/t/p/w45/8uO0gUM8aNqYLs1OsTBQiXu0fEv.jpg
-		//Picasso.with(this).load("https://image.tmdb.org/t/p/w45/" + );
-
 		this.request(research);
+		this.listenerManager();
 	}
 
+	/**
+	 * Envoie la requête <i>research</i> construite et parse/traite les données retournées
+	 * @param research la requête http dont on souhaite récupérer les données (en JSON)
+	 */
 	private void request(String research) {
-		final ArrayList<Movie> movies = new ArrayList<>();
+		this.movies = new ArrayList<>();
+		findViewById(R.id.listView).setVisibility(View.INVISIBLE);
+		findViewById(R.id.progressBar).setVisibility(View.VISIBLE);
+
 		StringRequest stringRequest = new StringRequest(
 				Request.Method.POST,
 				research,
@@ -100,7 +113,16 @@ public class ViewActivity extends AppCompatActivity {
 											.setCategories(categories)
 								);
 								Log.i("Movie found", movies.get(i).toString());
+							}
 
+							if (movies.size() != 0) {
+								viewHolder.listView.setAdapter(new MovieAdapter(ViewActivity.this, movies));
+								findViewById(R.id.progressBar).setVisibility(View.GONE);
+								findViewById(R.id.listView).setVisibility(View.VISIBLE);
+							}
+							else {
+								Toast.makeText(ViewActivity.this, NODATA, Toast.LENGTH_SHORT).show();
+								finish();
 							}
 						}
 						catch(JSONException je) {
@@ -115,6 +137,23 @@ public class ViewActivity extends AppCompatActivity {
 				}
 		);
 		getAppRequestQueue().add(stringRequest);
-		viewHolder.listView.setAdapter(new MovieAdapter(this, movies));
+	}
+
+	/**
+	 * Gestionnaire du listener pour le traitement associé au click
+	 * sur l'un des éléments de la liste des films
+	 */
+	private void listenerManager() {
+		((AdapterView) findViewById(R.id.listView)).setOnItemClickListener(
+				new AdapterView.OnItemClickListener() {
+					@Override
+					public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+						startActivity(
+								new Intent(ViewActivity.this, DetailsActivity.class)
+										.putExtra("movie", movies.get(position))
+						);
+					}
+				}
+		);
 	}
 }

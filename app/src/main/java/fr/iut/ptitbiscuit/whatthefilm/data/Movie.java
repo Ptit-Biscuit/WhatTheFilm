@@ -1,12 +1,15 @@
 package fr.iut.ptitbiscuit.whatthefilm.data;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.util.Arrays;
 
 /**
  * Classe contenant les données relatives à un film.<br/>
  * Les données sont récupérées sur le site <a href="https://www.themoviedb.org">themoviedb.org</a>
  */
-public class Movie {
+public class Movie implements Parcelable {
 
     /**
      * Le titre du {@link Movie}
@@ -66,7 +69,28 @@ public class Movie {
         this.date = date;
     }
 
-    /**
+	protected Movie(Parcel in) {
+		this.title = in.readString();
+		this.desc = in.readString();
+		this.date = in.readString();
+		this.imagePath = in.readString();
+		this.categories = in.createStringArray();
+		this.rating = in.readFloat();
+	}
+
+	public static final Creator<Movie> CREATOR = new Creator<Movie>() {
+		@Override
+		public Movie createFromParcel(Parcel in) {
+			return new Movie(in);
+		}
+
+		@Override
+		public Movie[] newArray(int size) {
+			return new Movie[size];
+		}
+	};
+
+	/**
      * Retourne le titre de ce {@link Movie}
      * @return le titre de ce {@link Movie}
      */
@@ -240,5 +264,22 @@ public class Movie {
                 "categories='" + Arrays.toString(categories) + "\',\n" +
                 "rating='" + rating + "\',\n" +
                 '}';
+    }
+
+    // Méthodes pour interface Parcelable
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(this.title);
+        dest.writeString(this.desc);
+        dest.writeString(this.date);
+        dest.writeString(this.imagePath);
+        dest.writeStringArray(this.categories);
+	    dest.writeFloat(this.rating);
     }
 }

@@ -89,6 +89,7 @@
         android:layout_alignStart="@+id/language"
         android:layout_alignEnd="@+id/years"
         android:onClick="research" />
+
 </RelativeLayout>
 
 	<ProgressBar

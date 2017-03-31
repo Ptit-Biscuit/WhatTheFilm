@@ -31,13 +31,16 @@
 		    android:layout_height="wrap_content"
 		    android:id="@+id/filmCategory" />
 
-	    <RatingBar
-		    android:layout_width="wrap_content"
-		    android:layout_height="wrap_content"
-		    android:id="@+id/filmRating"
-		    android:isIndicator="true"
-		    android:rating="0"
-		    style="@style/Widget.AppCompat.RatingBar.Small" />
+		<RatingBar
+			android:id="@+id/filmRating"
+			style="@style/Widget.AppCompat.RatingBar.Small"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:isIndicator="true"
+			android:rating="0"
+			android:numStars="10"
+			android:progressTint="@color/yellow"
+			android:visibility="visible" />
     </LinearLayout>
 
 </LinearLayout>
