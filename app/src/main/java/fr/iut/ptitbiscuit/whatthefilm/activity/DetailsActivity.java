@@ -1,7 +1,8 @@
 package fr.iut.ptitbiscuit.whatthefilm.activity;
 
-import android.support.v7.app.AppCompatActivity;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
@@ -21,6 +22,7 @@ public class DetailsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_details);
+	    setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_USER_PORTRAIT);
 
 	    Movie movie = getIntent().getParcelableExtra("movie");
 
@@ -31,7 +33,9 @@ public class DetailsActivity extends AppCompatActivity {
 			    .load("https://image.tmdb.org/t/p/w500/" + movie.getImagePath())
 			    .into(((ImageView) findViewById(R.id.poster)));
 	    ((TextView) findViewById(R.id.desc)).setText(movie.getDesc());
-	    ((TextView) findViewById(R.id.categories)).setText(Arrays.toString(movie.getCategories()));
+	    ((TextView) findViewById(R.id.categories)).setText(
+	    		Arrays.toString(movie.getCategories())
+	    );
 	    ((RatingBar) findViewById(R.id.score)).setRating(movie.getRating());
     }
 }

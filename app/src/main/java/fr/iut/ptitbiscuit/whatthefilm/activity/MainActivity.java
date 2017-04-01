@@ -3,16 +3,22 @@ package fr.iut.ptitbiscuit.whatthefilm.activity;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
-import android.widget.*;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ProgressBar;
+import android.widget.Spinner;
+import android.widget.Toast;
+
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
-import fr.iut.ptitbiscuit.whatthefilm.R;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -22,6 +28,8 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
+
+import fr.iut.ptitbiscuit.whatthefilm.R;
 
 import static fr.iut.ptitbiscuit.whatthefilm.WTFApplication.getAppRequestQueue;
 
@@ -61,6 +69,7 @@ public class MainActivity extends AppCompatActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_USER_PORTRAIT);
 		this.viewHolder.movieName = (EditText) findViewById(R.id.editText);
 		this.viewHolder.language = (Spinner) findViewById(R.id.language);
 		this.viewHolder.year = (EditText) findViewById(R.id.years);

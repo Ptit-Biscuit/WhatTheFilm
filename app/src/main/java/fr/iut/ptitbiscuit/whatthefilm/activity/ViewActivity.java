@@ -6,20 +6,25 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
-import android.widget.*;
+import android.widget.AdapterView;
+import android.widget.ListView;
+import android.widget.Toast;
+
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
-import fr.iut.ptitbiscuit.whatthefilm.R;
-import fr.iut.ptitbiscuit.whatthefilm.data.Movie;
-import fr.iut.ptitbiscuit.whatthefilm.data.MovieAdapter;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.json.JSONTokener;
 
 import java.util.ArrayList;
+
+import fr.iut.ptitbiscuit.whatthefilm.R;
+import fr.iut.ptitbiscuit.whatthefilm.data.Movie;
+import fr.iut.ptitbiscuit.whatthefilm.data.MovieAdapter;
 
 import static fr.iut.ptitbiscuit.whatthefilm.WTFApplication.getAppRequestQueue;
 
@@ -108,7 +113,7 @@ public class ViewActivity extends AppCompatActivity {
 											.setTitle(obj.getString("title"))
 											.setDesc(obj.getString("overview"))
 											.setDate(obj.getString("release_date"))
-											.setRating(obj.getLong("vote_average"))
+											.setRating(obj.getLong("vote_average") / 2)
 											.setImagePath(obj.getString("poster_path"))
 											.setCategories(categories)
 								);

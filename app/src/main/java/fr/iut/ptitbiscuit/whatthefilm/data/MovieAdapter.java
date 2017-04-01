@@ -5,11 +5,19 @@ import android.content.Context;
 import android.support.annotation.NonNull;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.*;
-import fr.iut.ptitbiscuit.whatthefilm.R;
+import android.widget.ArrayAdapter;
+import android.widget.ImageView;
+import android.widget.ListView;
+import android.widget.RatingBar;
+import android.widget.TextView;
+
+import com.squareup.picasso.Picasso;
 
 import java.util.Arrays;
 import java.util.List;
+
+import fr.iut.ptitbiscuit.whatthefilm.R;
+import fr.iut.ptitbiscuit.whatthefilm.WTFApplication;
 
 /**
  * Sous classe de {@link ArrayAdapter} permettant d'afficher des {@link Movie}
@@ -66,8 +74,10 @@ public class MovieAdapter extends ArrayAdapter<Movie> {
 
 	    viewHolder.nameHolder.setText(getItem(position).getTitle());
 	    viewHolder.categoryHolder.setText(Arrays.toString(getItem(position).getCategories()).replace("[", "").replace("]", ""));
-		//TODO récupérer l'image et l'afficher
-//	    viewHolder.imageHolder.setImageURI();
+	    Picasso
+			    .with(WTFApplication.getAppContext())
+			    .load("https://image.tmdb.org/t/p/w500/" + getItem(position).getImagePath())
+			    .into(viewHolder.imageHolder);
 	    viewHolder.ratingHolder.setRating(getItem(position).getRating());
 
         return convertView;

@@ -38,8 +38,8 @@
 			android:layout_height="wrap_content"
 			android:isIndicator="true"
 			android:rating="0"
-			android:numStars="10"
-			android:progressTint="@color/yellow"
+			android:numStars="5"
+			android:progressTint="@color/postalYellow"
 			android:visibility="visible" />
     </LinearLayout>
 
